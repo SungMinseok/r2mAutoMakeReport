@@ -75,7 +75,7 @@ font : bold</string>
       <item>
        <widget class="QComboBox" name="combox_country">
         <property name="enabled">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
@@ -279,7 +279,12 @@ font : bold</string>
         </property>
         <item>
          <property name="text">
-          <string>R2M</string>
+          <string>KR R2M</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>TW R2M</string>
          </property>
         </item>
        </widget>
@@ -1067,13 +1072,13 @@ font: bold</string>
     <property name="title">
      <string>메뉴</string>
     </property>
-    <addaction name="action_howtouse"/>
-    <addaction name="action_patchnote"/>
+    <addaction name="menu_howtouse"/>
+    <addaction name="menu_patchnote"/>
    </widget>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="action_patchnote">
+  <action name="menu_patchnote">
    <property name="text">
     <string>패치노트</string>
    </property>
@@ -1083,7 +1088,7 @@ font: bold</string>
     <string>AD</string>
    </property>
   </action>
-  <action name="action_howtouse">
+  <action name="menu_howtouse">
    <property name="text">
     <string>HOW TO USE</string>
    </property>

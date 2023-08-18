@@ -38,8 +38,8 @@ def save_qa_info_to_csv(excel_filename):
 
     # Create a dictionary to hold the data
     qa_info = {
-        'PROJECT_NAME': df.loc[4, 2],
-        'PROJECT_NAME_1': df.loc[4, 2].replace(' QA',''),
+        'PROJECT_NAME_0': df.loc[4, 2],
+        'PROJECT_NAME_1': str(df.loc[4, 2]).replace(' QA',''),
         'START_DATE': start_date,
         'END_DATE': end_date,
         'MEMBERS': df.loc[7, 2],

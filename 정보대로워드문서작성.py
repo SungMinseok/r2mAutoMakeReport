@@ -16,6 +16,7 @@ def replace_text_with_format(paragraph, old_text, new_text):
                 
                 # Replace the text
                 text.text = text.text.replace(old_text, new_text)
+                print(text.text)
                 
                 # Apply the formatting to the new text
                 # new_run = p.add_r()

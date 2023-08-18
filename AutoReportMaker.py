@@ -14,7 +14,7 @@ import shutil
 from CL파일읽고정보저장 import *
 from 정보대로워드문서작성 import *
 
-form_class = uic.loadUiType(f'./AutoReport_UI.ui')[0]
+form_class = uic.loadUiType(f'./AutoReportMaker_UI.ui')[0]
 
 
 class WindowClass(QMainWindow, form_class) :
@@ -26,18 +26,20 @@ class WindowClass(QMainWindow, form_class) :
         self.statusLabel = QLabel(self.statusbar)
 
         self.setGeometry(1470,28,400,400)
-        self.setFixedSize(400,400)
+        self.setFixedSize(500,400)
         
         self.dateedit_project.setDate(QDate.currentDate())
 
         '''기본값입력■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■'''
         #소스가 있는 폴더(r2m 쉐어 포인트)
         self.input_departure_dir_path.setText(fr"c:\Users\mssung\OneDrive - Webzen Inc\라이브 서비스(국내)\KR R2M\2023 3분기\230817 패치")
+        self.input_departure_dir_path.setText(fr"C:\Users\mssung\OneDrive - Webzen Inc\라이브 서비스(대만)\TW R2M 2023년\2023년 3분기\230822 패치")
         #최종 목적지 폴더(팀 쉐어 포인트)
         self.input_destination_dir_path.setText(fr"C:\Users\mssung\OneDrive - Webzen Inc\R2M\QA\2023년")
         
         '''메뉴탭■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■'''
-        #self.menu_patchnote.triggered.connect(lambda : self.파일열기("패치노트.txt"))
+        self.menu_howtouse.triggered.connect(lambda : self.파일열기("사용법_AutoReportMaker.txt"))
+        self.menu_patchnote.triggered.connect(lambda : self.파일열기("패치노트_AutoReportMaker.txt"))
         #self.combox_country.currentTextChanged.connect(self.set_data_path)
 
 
@@ -65,6 +67,7 @@ class WindowClass(QMainWindow, form_class) :
         #share_point_path = os.path.join(destination_path,f'{date.strftime("%y%m%d")} {patch_type}')
         self.폴더내용물전체복사(source_directory,destination_path)
 
+        '''QA_결과보고 문서 작성'''
         checklist_file_name = fr'CL_{country}_{project_name}_{date.strftime("%y%m%d")} {patch_type} QA.xlsx'
         checklist_file_path = os.path.join(destination_path, checklist_file_name)
         save_qa_info_to_csv(checklist_file_path)
@@ -169,6 +172,12 @@ class WindowClass(QMainWindow, form_class) :
         except Exception as e:
             print(f"An error occurred: {e}")
 
+    def 파일열기(self,filePath):
+        try:
+            os.startfile(filePath)
+        except : 
+            print("파일 없음 : "+filePath)    
+            
 
 if __name__ == "__main__" :
     #QApplication : 프로그램을 실행시켜주는 클래스
